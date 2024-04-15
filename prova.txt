@@ -43,8 +43,10 @@ int main(void) {
 				printf("Você perdeu. A porta premiada era a %d", portaPremiada);
 			}
 		}else{
-			printf ("Qual será a nova porta? %d %d\n", portaEscolhida, portaPremiada);
-			scanf("%d", &novaPorta);
+			do{
+					novaPorta = rand() % 3 + 1;
+				} while(novaPorta == portaEscolhida || novaPorta == portaVazia);
+			printf ("Sua nova porta será: %d \n", novaPorta);
 			if(portaPremiada == novaPorta){
 							printf("Você ganhou! Parabéns!");
 						}else{
