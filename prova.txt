@@ -1,0 +1,63 @@
+/*
+ ============================================================================
+ Name        : prj_helloworld.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+
+int main(void) {
+	int portaEscolhida, resultado,novaPorta;
+	char opcao; 
+	printf("Bem vindo ao jogo Monty Hall! \n");
+	printf("Escolha entre uma das portas(1,2,3)\n");
+	scanf("%d", &portaEscolhida);
+	
+	srand(time(NULL)); 
+	
+	int portaPremiada = rand() % 3 + 1;
+	
+	int portaVazia = rand() % 3 + 1;
+	  
+	do{
+		portaVazia = rand() % 3 + 1;
+	} while(portaVazia == portaEscolhida || portaVazia == portaPremiada);
+	
+	
+	printf("O apresentador abriu a porta: %d\n", portaVazia);
+	printf("Que estava Vazia!!!\n");
+	printf("Voce deseja trocar de porta?(s/n)\n");
+	scanf(" %c", &opcao);
+		if(opcao == 'n'){
+			if(portaPremiada == portaEscolhida){
+				printf("Você ganhou! Parabéns!");
+			}else{
+				printf("Você perdeu. A porta premiada era a %d", portaPremiada);
+			}
+		}else{
+			printf ("Qual será a nova porta? %d %d\n", portaEscolhida, portaPremiada);
+			scanf("%d", &novaPorta);
+			if(portaPremiada == novaPorta){
+							printf("Você ganhou! Parabéns!");
+						}else{
+							printf("Você perdeu. A porta premiada era a %d", portaPremiada);
+						}
+		}
+	
+	
+	
+	//printf("Aporta premiada é: %d", portaPremiada);
+	
+	//printf("A porta vazia é: %d", portaVazia );
+	
+	
+	return EXIT_SUCCESS;
+}
